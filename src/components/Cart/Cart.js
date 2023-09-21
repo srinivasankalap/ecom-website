@@ -1,9 +1,12 @@
-import React from 'react';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import CartItem from './CartItem';
+import { useCart } from '../../store/cartContext';
 
-const Cart = ({ cartElements, showCart, onCloseCart, onRemoveFromCart }) => {
+const Cart = ({ showCart, onCloseCart }) => {
+    const { cartElements, addToCart, removeFromCart } = useCart(); 
+
   const totalAmount = cartElements.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
@@ -18,7 +21,7 @@ const Cart = ({ cartElements, showCart, onCloseCart, onRemoveFromCart }) => {
           <CartItem
             key={index}
             {...item}
-            onRemove={() => onRemoveFromCart(index)}
+            onRemove={() => removeFromCart(index)}
           />
         ))}
       </Modal.Body>

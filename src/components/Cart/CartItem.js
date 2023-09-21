@@ -1,8 +1,10 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { useCart } from '../../store/cartContext';
 
-const CartItem = ({ title, price, imageUrl, quantity, onRemove }) => {
+const CartItem = ({ title, price, imageUrl, quantity}) => {
+    const { cartItems, addToCart, removeFromCart } = useCart(); 
   return (
     <Card className="mb-3">
       <Card.Body>
@@ -16,7 +18,7 @@ const CartItem = ({ title, price, imageUrl, quantity, onRemove }) => {
             <img src={imageUrl} alt={title}/>
           </div>
         </div>
-        <Button variant="danger" onClick={onRemove}>
+        <Button variant="danger" onClick={removeFromCart}>
           Remove
         </Button>
       </Card.Body>
