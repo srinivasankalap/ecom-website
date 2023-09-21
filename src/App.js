@@ -1,4 +1,4 @@
-import React from 'react';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ProductList from './components/ProductList';
@@ -25,6 +25,9 @@ const productsArr = [
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
   },
 ];
+
+
+
 
 function App() {
   return (

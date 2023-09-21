@@ -1,9 +1,49 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import Cart from '../Cart/Cart';
+
+const cartElements = [
+  {
+    title: 'Colors',
+    price: 100,
+    imageUrl:
+      'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+    quantity: 2,
+  },
+  {
+    title: 'Black and white Colors',
+    price: 50,
+    imageUrl:
+      'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+    quantity: 3,
+  },
+  {
+    title: 'Yellow and Black Colors',
+    price: 70,
+    imageUrl:
+      'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+    quantity: 1,
+  },
+];
 
 function Header() {
+  const [showCart, setShowCart] = useState(false);
+  const [cart, setCart]=useState(cartElements);
+
+  const openCartHandler = () => {
+    setShowCart(true);
+  };
+
+  const closeCartHandler = () => {
+    setShowCart(false);
+  };
+
+  const removeItemFromCartHandler = (index) => {
+    const updatedCart  = cartElements.filter((_, i) => i !== index);
+    setCart(updatedCart);
+  };
   return (
     <Navbar bg="dark" data-bs-theme="dark">
         <Container>
@@ -14,7 +54,15 @@ function Header() {
             <Nav.Link href="#pricing">About</Nav.Link>
           </Nav>
           <Navbar.Collapse className="justify-content-end">
-            <Button type="cart">Cart</Button>
+            <button className="cart-button" onClick={openCartHandler}>
+              Open Cart
+            </button>
+            <Cart
+              cartElements={cart}
+              showCart={showCart}
+              onCloseCart={closeCartHandler}
+              onRemoveFromCart={removeItemFromCartHandler}
+            />
           </Navbar.Collapse>
         </Container>
       </Navbar>
