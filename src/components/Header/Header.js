@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import {Nav } from 'react-bootstrap';
 import classes from './Header.module.css'
 import HeaderCartButton from './HeaderCartButton';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = (props) => {
@@ -11,11 +10,9 @@ const Header = (props) => {
       <header className={classes.header}>
         <nav>
           <ul>
-            <li>
-            <Link  className='nav-link active'>Home</Link>
-            </li>
-            <li><Link to="/" className='nav-link active'>Store</Link></li>
-            <li><Link to="/About" className='nav-link active'>About</Link></li>
+            <li><NavLink to="/Home"  className='nav-link active'>Home</NavLink></li>
+            <li><NavLink to="/" className='nav-link active'>Store</NavLink></li>
+            <li><NavLink to="/About" className='nav-link active'>About</NavLink></li>
           </ul>
         </nav>
         <div className={classes.button}>

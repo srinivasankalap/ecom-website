@@ -1,0 +1,44 @@
+.div {
+    background-color: #808080;
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-top: 5rem;
+}
+
+.div h1 {
+    font-size: 100px;
+    color: white
+}
+.subtitle{
+    font-family: "Metal Mania";
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    
+}
+
+.div button {
+    display: block;
+    background-color: inherit;
+    border: 2px solid #10cef4;
+    color: #10cef4;
+    margin: auto;
+    padding: 0.5rem 1.5rem;
+    margin-top: 20px;
+    font-size: 25px;
+    /* font-weight: bold; */
+}
+
+.play-button {
+    border-radius: 50%;
+    color: #10cef4
+}
+.play-button:hover {
+    border-radius: 50%;
+    color: white;
+    background-color: #10cef4;
+}
+
+.tourInfo {
+    margin-bottom: 80px;
+}

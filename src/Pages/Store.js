@@ -4,7 +4,7 @@ import Cart from "../components/Cart/Cart";
 import ProductCard from "../components/ItemList/ProductCard";
 import Header from "../components/Header/Header";
 
-const Home=()=>{
+const Store=()=>{
     const [showCart, setShowCart] = useState(false);
     const ShowCartHandler =()=> setShowCart(true)
     const HideCartShownHandler =()=> setShowCart(false)
@@ -20,4 +20,4 @@ const Home=()=>{
     )
 }
 
-export default Home;
+export default Store;

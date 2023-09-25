@@ -1,0 +1,49 @@
+.div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.div span {
+    padding: 10px;
+    margin-bottom: 20px;
+    color: black;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.date {
+    flex: 1;
+    font-size: 20px;
+    color: black;
+}
+
+.place {
+    flex: 1;
+    opacity: 0.55;
+    color: black;
+}
+
+.venue {
+    flex: 2;
+    opacity: 0.55;
+    color: black;
+}
+
+.div button {
+    flex: 1;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 0 10px 0;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #05d9f5;
+    border-radius: 5px;
+}
+.div button:hover{
+    border: 2px solid #10cef4;
+    background-color: inherit;
+}
