@@ -1,0 +1,55 @@
+.button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+   margin: 5px 10px;
+    color: white;
+    padding: 0.75rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid blue;
+  }
+.numberNo{
+  color: blue;
+  position: fixed;
+  top: -1px;
+  margin-left: 0.5px;
+}
+  span{
+    color: blue;
+    /* margin-left: 0.6rem; */
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  Button span:hover,
+  Button span:active {
+    color: white;
+    /* background-color: blue; */
+    
+  }
+  
+  .bump {
+    animation: bump 300ms ease-out;
+  }
+  
+  @keyframes bump {
+    0% {
+      transform: scale(1);
+    }
+    10% {
+      transform: scale(0.9);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+}

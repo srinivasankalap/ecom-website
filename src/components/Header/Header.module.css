@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    align-items: center;
+    background-color: black;
+    border-bottom: 3px solid #6ddbffda;
+    top: 0%;
+    z-index: 1;
+    padding: 10px;
+    justify-content: space-around;
+    column-gap: 20%;
+  }
+  
+  .header li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .header a {
+    text-decoration: none;
+    color: white;
+    margin: 0 80px 0 0;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .header a.active {
+    border-bottom: 2px solid #e4d317;
+  }
+  
+  .button {
+    justify-content: right;
+  }
