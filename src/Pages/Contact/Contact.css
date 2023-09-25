@@ -1,0 +1,25 @@
+h1{
+    margin-top: 7rem;
+    text-align: center;
+}
+
+form{
+    background-color: beige;
+    margin: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+input{
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+label{
+    font-weight: 1000;
+}
