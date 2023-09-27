@@ -1,0 +1,30 @@
+.form{
+    width: 600px;
+    margin: 50px auto;
+    height: 370px;
+    padding: 20px;
+   
+    box-shadow: rgba(0, 0, 0, 0.826) 1px 3px 8px;
+
+}
+h1{
+    text-align: center;
+    padding: 3rem;
+    margin-top: 5rem;
+    font-size: 100px;
+    color: white;
+    background-color: #808080;
+}
+
+.form-group{
+    margin: 10px 0;
+}
+.input{
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 1px 4px;
+
+}
+.submit-form-btn{
+    margin-top: 10px;
+    background:#ff3f6c !important;
+    border: 1px solid #ff3f6c !important;
+}

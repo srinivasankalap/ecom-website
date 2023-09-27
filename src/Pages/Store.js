@@ -1,23 +1,25 @@
-import { useState } from "react";
-import CartProvider from "../store/CartProvider";
-import Cart from "../components/Cart/Cart";
-import ProductCard from "../components/ItemList/ProductCard";
-import Header from "../components/Header/Header";
+import React from "react";
+import { productsArr } from "../components/Products/ProductsData";
+import { Container, Row } from "react-bootstrap";
+import ProductItem from "../components/Products/ProductItem";
+const Store = (props) => {
+  const ProductList = productsArr.map((product) => (
+    <ProductItem
+      key={product.id}
+      id={product.id}
+      title={product.title}
+      price={product.price}
+      imageUrl={product.imageUrl}
+    />
+  ));
 
-const Store=()=>{
-    const [showCart, setShowCart] = useState(false);
-    const ShowCartHandler =()=> setShowCart(true)
-    const HideCartShownHandler =()=> setShowCart(false)
-    return(
-        <CartProvider>
-       {showCart && <Cart showCart={ShowCartHandler} onCloseCart={HideCartShownHandler}/>}
-    <Header onShowCart={ShowCartHandler}/>
-    <div className="container" style={{marginTop: 150}}>
-      <h1>Products</h1>
-      <ProductCard />
-    </div>
-    </CartProvider>
-    )
-}
+  return (
+    <>
+      <Container fluid>
+        <Row>{ProductList}</Row>
+      </Container>
+    </>
+  );
+};
 
 export default Store;

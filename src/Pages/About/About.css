@@ -1,3 +1,14 @@
 .title{
+    text-align: center;
+    padding: 3rem;
     margin-top: 5rem;
+    font-size: 100px;
+    color: white;
+    background-color: #808080;
+}
+
+.about{
+    margin: 3rem;
+    padding: 1rem;
+    border: 0.2rem solid;
 }

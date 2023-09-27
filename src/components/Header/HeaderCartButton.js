@@ -1,22 +1,21 @@
-import React, {useContext} from 'react';
-import {Button} from 'react-bootstrap'
-import classes from './HeaderCartButton.module.css';
-import CartContext from '../../store/cartContext';
-
-const HeaderCartButton = (props) => {
-  const cartCtx = useContext(CartContext);
-// if i wanna increse cart number then i have to add amount not totalAmount
-  const numberOfCartItem = cartCtx.title.reduce((curr, item)=> {
-    return curr + item.amount
-  }, 0);
+import React, { useContext } from "react";
+import { Badge, Button } from "react-bootstrap";
+import stylesheet from "./HeaderCartButton.module.css";
+import CartContext from "../../store/cartContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+const CartButton = (props) => {
+  const cartcontext = useContext(CartContext);
+  const quantity = cartcontext.totalQuantity;
   return (
-    <div>
-      <Button variant="outline-primary" onClick={props.onClicked}>
-       <span>Cart</span> 
+    <>
+      <Button className={stylesheet["cart-button"]} onClick={props.onOpenCart}>
+        <AiOutlineShoppingCart />
       </Button>
-       <span className={classes.numberNo}>{numberOfCartItem}</span>
-    </div>
-  )
-}
+      <Badge pill bg="#ff3f6c" className={stylesheet["total-item"]}>
+        {quantity}
+      </Badge>
+    </>
+  );
+};
 
-export default HeaderCartButton
+export default CartButton;

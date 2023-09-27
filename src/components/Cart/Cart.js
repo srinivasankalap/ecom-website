@@ -1,41 +1,46 @@
-import { useContext } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import CartItem from './CartItem';
-import CartContext from '../../store/cartContext';
-
+import { Button, Modal } from "react-bootstrap";
+import { useContext} from "react";
+import CartItem from "./CartItem";
+import stylesheet from "./Cart.module.css";
+import CartContext from "../../store/cartContext";
 const Cart = (props) => {
-    const cartCtx = useContext(CartContext); 
-
-    console.log(cartCtx)
-  const totalAmount = cartCtx.title.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
+  const cartcontext = useContext(CartContext);
+  // const cartItemAddHandler = () => {};
+  const cardItemList = cartcontext.products.map((product) => (
+    <CartItem
+      key={product.id}
+      id={product.id}
+      title={product.title}
+      price={product.price}
+      imageUrl={product.imageUrl}
+      quantity={product.quantity}
+    />
+  ));
+  // calulating the total products amount
+  let totalAmount = 0;
+  cartcontext.products.forEach((product) => {
+    totalAmount = totalAmount + Number(product.price * product.quantity);
+  });
 
   return (
-    <Modal show={props.showCart} onHide={props.onCloseCart}>
-      <Modal.Header closeButton>
-        <Modal.Title>Your Cart</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {cartCtx.title.map((item, index) => (
-          <CartItem
-            key={index}
-            title={item.title}
-            price={item.price}
-            image={item.imageUrl}
-            amount={item.amount}
-            onRemove={() => cartCtx.removeItem(index)}
-          />
-        ))}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={props.onCloseCart}>
-          Close
-        </Button>
-        <Button variant="primary">Order (${totalAmount.toFixed(2)})</Button>
-      </Modal.Footer>
-    </Modal>
+    <>
+      <Modal
+        fullscreen="xxl-down"
+        show={props.openCart}
+        onHide={props.onHindeCart}
+        size="lg"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{cardItemList}</Modal.Body>
+        <Modal.Footer>
+          Total {`₹ ${totalAmount.toFixed(2)}`}
+          <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 

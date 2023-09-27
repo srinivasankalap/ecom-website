@@ -27,7 +27,7 @@
   }
   
   .header a.active {
-    border-bottom: 2px solid #e4d317;
+    text-decoration:#6ddbffda;
   }
   
   .button {

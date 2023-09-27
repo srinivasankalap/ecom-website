@@ -1,0 +1,35 @@
+.button{
+    color: #fff !important;
+    background-color: rgb(255, 63, 108) !important;
+    border:   1px solid rgb(255, 63, 108) !important;
+    float: right;
+    cursor: pointer;
+    
+    }
+    .price{
+       display: inline-block;
+   
+    }
+    .image-container {
+      
+       overflow: hidden;
+   }
+    .image {
+       /* width: 100%; */
+       transform-origin: center center;
+       object-fit: cover;
+       height: 100%;
+       width: 100%;
+       padding: 0px;
+       margin: 0px;
+       transition: ease-in 0.5s;
+       filter: brightness(100%);
+   }
+   
+   img:hover  {
+       
+       transform: scale(1.5);
+       filter: brightness(130%);
+       
+   }
+     
