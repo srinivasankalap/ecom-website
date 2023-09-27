@@ -8,7 +8,7 @@ const CartItem = (props) => {
     const newQuantity = +event.target.value
     updateQuantity(props.id,newQuantity)
   }
-  const price = `₹ ${props.price.toFixed(2)}`;
+  const price = ` ${props.price.toFixed(2)}`;
   return (
     <>
       <Card style={{ width: "100%" }}>

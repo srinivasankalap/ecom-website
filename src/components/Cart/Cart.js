@@ -36,7 +36,8 @@ const Cart = (props) => {
   return (
     <>
       <Modal
-        fullscreen="xxl-down"
+        fullscreen='lg-down'
+        scrollable='true'
         show={props.openCart}
         onHide={props.onHindeCart}
         size="lg"

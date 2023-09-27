@@ -19,12 +19,12 @@ const CartProvider = (props) => {
       }
       return products.reduce((total,product)=>total +product.amount,0)
     }
-    const calculateNumberOfCartItems=(products)=>{
-      if(!products|| products.length===0){
-        return 0
-      }
-      return products.reduce((total,product)=> total+ product.quantity,0)
-    }
+    // const calculateNumberOfCartItems=(products)=>{
+    //   if(!products|| products.length===0){
+    //     return 0
+    //   }
+    //   return products.reduce((total,product)=> total+ product.quantity,0)
+    // }
  
 
 
@@ -44,7 +44,7 @@ const CartProvider = (props) => {
       if(!authcontext.isLoggedIn){
         setCart(defaultCart)
       }
-    },[])
+    },[authcontext.isLoggedIn])
 
    
 
@@ -69,7 +69,7 @@ const CartProvider = (props) => {
     
     useEffect(() => {
       fetchCartProducts();
-    }, [email]);
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
    
   const addProductToCart = async (product) => {
@@ -216,7 +216,6 @@ const updateQuantity = async (id, quantity) => {
 
 
 const initialTotalAmount = calculateTotalAmount(cart.products)
-const initialNumberOfCartItems= calculateNumberOfCartItems(cart.products)
   
   const cartContext = {
     products: cart.products,
