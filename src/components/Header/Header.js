@@ -54,6 +54,7 @@ const navigate = useNavigate()
             {!authcontext.isLoggedIn && location.pathname !== "/auth" && (
 
               <Button onClick={loginHandler}style={{
+                textAlign: 'right',
                 fontSize: "1.3rem",
                 marginLeft: "0.50rem",
                 backgroundColor: "transparent",

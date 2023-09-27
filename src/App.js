@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Cart from "./components/Cart/Cart";
@@ -28,16 +28,17 @@ function App() {
     <CartProvider>
       <Header onOpenCart={openCartHandler} />
       {openCart && <Cart openCart={openCart} onHindeCart={hideCardHandler} />}
-
       <Routes>
         <>
-        {authcontext.isLoggedIn && (
+        {authcontext.isLoggedIn ? (
            <>
             <Route path="/home" element={<Home />} />
           <Route path="/" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           </>
+          ): (
+            <Route path="*" element={<Navigate to="/auth" />} />
           )}
           {!authcontext.isLoggedIn && <Route path="/auth" element={<Authentication />}/>}
            </>
