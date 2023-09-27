@@ -39,8 +39,7 @@ const navigate = useNavigate()
   return (
     <>
       <Navbar
-      expand="lg"
-        className="bg-body-tertiary"
+      bg="dark" data-bs-theme="dark"
         style={{ boxSshadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}
       >
         <Container>

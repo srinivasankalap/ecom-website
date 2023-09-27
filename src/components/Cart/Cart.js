@@ -36,11 +36,10 @@ const Cart = (props) => {
   return (
     <>
       <Modal
-        fullscreen='lg-down'
-        scrollable='true'
         show={props.openCart}
         onHide={props.onHindeCart}
         size="lg"
+        scrollable="true"
         aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header closeButton>

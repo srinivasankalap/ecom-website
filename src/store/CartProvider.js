@@ -19,12 +19,12 @@ const CartProvider = (props) => {
       }
       return products.reduce((total,product)=>total +product.amount,0)
     }
-    // const calculateNumberOfCartItems=(products)=>{
-    //   if(!products|| products.length===0){
-    //     return 0
-    //   }
-    //   return products.reduce((total,product)=> total+ product.quantity,0)
-    // }
+    const calculateNumberOfCartItems=(products)=>{
+      if(!products|| products.length===0){
+        return 0
+      }
+      return products.reduce((total,product)=> total+ product.quantity,0)
+    }
  
 
 
@@ -44,7 +44,7 @@ const CartProvider = (props) => {
       if(!authcontext.isLoggedIn){
         setCart(defaultCart)
       }
-    },[authcontext.isLoggedIn])
+    },[])
 
    
 
@@ -69,7 +69,7 @@ const CartProvider = (props) => {
     
     useEffect(() => {
       fetchCartProducts();
-    }, []);// eslint-disable-line react-hooks/exhaustive-deps
+    }, [email]);
     
    
   const addProductToCart = async (product) => {
@@ -88,6 +88,7 @@ if(!product || !product.id|| product.amount){
     let updatedItems;
 
     if(existingCartItem){
+      console.log('Already')
     const updatedItem={
       ...existingCartItem,
       quantity:existingCartItem.quantity + 1,
@@ -95,17 +96,17 @@ if(!product || !product.id|| product.amount){
     }
     updatedItems = [...existingProducts];
     updatedItems[existingCartItemIndex] = updatedItem;
-
+    console.log(updatedItem)
     }else{
       const newProduct ={
         ...product,
         quantity: 1,
 
       }
-      console.log(newProduct)
       updatedItems = existingProducts.concat(newProduct);
-
+      
     }
+    console.log(updatedItems)
     const updatedTotalAmount = calculateTotalAmount(updatedItems)
     setCart({
       products:updatedItems,
@@ -139,9 +140,17 @@ if(!product || !product.id|| product.amount){
     )
     const existingItem = cart.products[existingCartItemIndex];
     const updatedTotalAmount = cart.totalAmount - existingItem.amount;
-    const updatedItems = cart.products.filter((item) => item.id !== id);
+    const newItems = [];
+
+  cart.products.map((item) => {
+    if (item.id === id) {
+      item.quantity !== 1 && newItems.push({ ...item, quantity: item.quantity - 1 });
+    } else {
+      newItems.push(item);
+    }
+  });
     setCart({
-      products: updatedItems,
+      products: newItems,
       totalAmount: updatedTotalAmount,
     });
 try{
@@ -151,7 +160,7 @@ try{
     "Content-Type":"application/json"
   },
   body: JSON.stringify({
-    products:updatedItems,
+    products:newItems,
     totalAmount:updatedTotalAmount
   })
   }
@@ -216,6 +225,7 @@ const updateQuantity = async (id, quantity) => {
 
 
 const initialTotalAmount = calculateTotalAmount(cart.products)
+const initialNumberOfCartItems= calculateNumberOfCartItems(cart.products)
   
   const cartContext = {
     products: cart.products,
