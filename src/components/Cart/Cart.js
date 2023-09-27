@@ -5,7 +5,21 @@ import stylesheet from "./Cart.module.css";
 import CartContext from "../../store/cartContext";
 const Cart = (props) => {
   const cartcontext = useContext(CartContext);
-  // const cartItemAddHandler = () => {};
+
+  const totalAmount = cartcontext.products? cartcontext.products.reduce(
+    (prevValue, currItem) =>{
+      const quantity = Number(currItem.quantity)
+      const price = Number(currItem.price)
+      if(isNaN(quantity)|| isNaN(price)){
+        return prevValue
+      }
+      const itemTotal = quantity * price
+      return prevValue + itemTotal
+    } ,0
+    
+  ):0;
+
+
   const cardItemList = cartcontext.products.map((product) => (
     <CartItem
       key={product.id}
@@ -14,13 +28,10 @@ const Cart = (props) => {
       price={product.price}
       imageUrl={product.imageUrl}
       quantity={product.quantity}
+      onRemove={() => cartcontext.removeProduct(product.id)}
     />
   ));
-  // calulating the total products amount
-  let totalAmount = 0;
-  cartcontext.products.forEach((product) => {
-    totalAmount = totalAmount + Number(product.price * product.quantity);
-  });
+  
 
   return (
     <>

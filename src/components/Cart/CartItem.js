@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import stylesheet from "./CartItem.module.css";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, Form } from "react-bootstrap";
 import CartContext from "../../store/cartContext";
 const CartItem = (props) => {
-  // const price = `₹ ${props.price.toFixed(2)}`;
-  const cartCtx = useContext(CartContext);
-  const handleRemoveClick = () => {
-    console.log(props.id)
-    cartCtx.removeProduct(props.id);
-  };
+  const { updateQuantity } = useContext(CartContext);
+  const handleQuantityChange = (event)=>{
+    const newQuantity = +event.target.value
+    updateQuantity(props.id,newQuantity)
+  }
+  const price = `₹ ${props.price.toFixed(2)}`;
   return (
     <>
       <Card style={{ width: "100%" }}>
@@ -24,13 +24,20 @@ const CartItem = (props) => {
             <Card.Body className="d-flex justify-content-between align-items-start">
               <Card.Title>{props.title}</Card.Title>
               <>
-                <Card.Text>₹ {props.price}</Card.Text>
-                {/* <Button variant="danger">-</Button> */}
-                <Card.Text>Quantity : {props.quantity}</Card.Text>
-                {/* <Button variant="danger">+</Button> */}
+                <Card.Text>₹ {price}</Card.Text>
+                <Form>
+                  <Form.Control
+                    type="number"
+                    min="1"
+                    max="10"
+                    id={`quantity-${props.id}`}
+                    value={props.quantity}
+                    onChange={handleQuantityChange}
+                  />
+                </Form>
               </>
 
-              <Button className={stylesheet["remove-item-btn"]} onClick={handleRemoveClick}>Remove</Button>
+              <Button className={stylesheet["remove-item-btn"]} onClick={props.onRemove}>Remove</Button>
             </Card.Body>
           </Col>
         </Row>
